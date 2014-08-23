@@ -1,0 +1,37 @@
+<apex:component controller="MyRelatedListComponentCtrl">
+	<apex:attribute
+		assignTo="{!parentRelationshipApiName}"
+		description="API name of relationship from the children to the parent Record"
+		name="parentRelationshipApiNameAttr"
+		required="true"
+		type="String"
+	/>
+	<apex:attribute
+		assignTo="{!parentRecordId}"
+		description="Id of Parent record"
+		name="parentRecordIdAttr"
+		required="true"
+		type="Id"
+	/>
+	<apex:attribute
+		assignTo="{!relatedRecordsApiName}"
+		description="API name of the related relationship"
+		name="relatedRecordsApiNameAttr"
+		required="true"
+		type="String"
+	/>
+	<apex:attribute
+		assignTo="{!relatedRecordsFieldSetMembers}"
+		description="Field set containing fields for displaying in Contact related list"
+		name="relatedRecordsFieldSetMembersAttr"
+		required="true"
+		type="String[]"
+	/>
+	<apex:pageBlock>
+		<apex:pageBlockTable value="{!relatedRecords}" var="relatedRecord" columns="{!relatedRecordsFieldSetMembersAttr.size}">
+			<apex:repeat var="fs" value="{!relatedRecordsFieldSetMembersAttr}">
+				<apex:column value="{!relatedRecord[fs]}" />
+			</apex:repeat>
+		</apex:pageBlockTable>
+	</apex:pageBlock>
+</apex:component>

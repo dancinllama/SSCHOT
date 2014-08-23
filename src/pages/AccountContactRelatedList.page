@@ -1,0 +1,19 @@
+<apex:page standardController="Account" extensions="MyCustomRelatedListCtrl">
+	<apex:pageBlock>
+		<apex:pageBlockTable columns="5" var="currentContact" value="{!ssc.records}">
+			<apex:column value="{!currentContact['FirstName']}" />
+			<apex:column value="{!currentContact['LastName']}" />
+			<apex:column value="{!currentContact['Title']}" />
+			<apex:column value="{!currentContact['Email']}" />
+			<apex:column value="{!currentContact['Phone']}" />
+		</apex:pageBlockTable>
+	</apex:pageBlock>
+
+	<!--
+	<c:MyCustomRelatedList
+		parentRelationshipApiNameAttr="AccountId"
+		parentRecordIdAttr="{!Account.Id}"
+		relatedRecordsApiNameAttr="Contact"
+		relatedRecordsFieldSetMembersAttr="{!relatedFieldsArray}"
+	/>-->
+</apex:page>
